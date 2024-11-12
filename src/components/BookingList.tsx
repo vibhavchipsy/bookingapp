@@ -5,9 +5,10 @@ import { Booking, getBookings, deleteBooking, updateBooking } from '../services/
 const BookingList: React.FC = () => {
     const [bookings, setBookings] = useState<Booking[]>([]);
     const [currentBooking, setCurrentBooking] = useState<Booking | null>(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        loadBookings();
+        loadBookings(); ations in 
     }, []);
 
     const loadBookings = async () => {
@@ -30,6 +31,8 @@ const BookingList: React.FC = () => {
         event.preventDefault();
         if (!currentBooking) return;
 
+        setLoading(true); // Start loading
+
         // Update the booking in the backend and the UI
         try {
             await updateBooking(currentBooking.id, currentBooking);
@@ -37,6 +40,8 @@ const BookingList: React.FC = () => {
             setCurrentBooking(null); // Reset the form
         } catch (error) {
             console.error("error updating booking: ", error);
+        } finally {
+            setLoading(false); // Stop loading
         }
     };
 
@@ -52,6 +57,9 @@ const BookingList: React.FC = () => {
                     </div>
                 ))}
             </ul>
+
+            {loading && <p>Loading...</p>} {/* Show loading text */}
+
             {currentBooking &&
                 <form onSubmit={handleSubmitEdit}>
                     <input
