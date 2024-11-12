@@ -11,7 +11,7 @@ const CreateBooking: React.FC<CreateBookingProps> = ({ onBookingCreated }) => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const newBooking: Booking = { name, date };
+        const newBooking: Booking = { id: Date.now(), name, date };
         await createBooking(newBooking);
         onBookingCreated();
         setName('');

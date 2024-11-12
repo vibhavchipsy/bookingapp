@@ -2,7 +2,7 @@ import api from "../api";
 import { Axios, AxiosResponse } from "axios";
 
 export interface Booking {
-    id?: number;
+    id: number;
     name: string;
     date: string;
 }
