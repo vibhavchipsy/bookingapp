@@ -23,6 +23,6 @@ export const updateBooking = async (id: number, data: Booking): Promise<AxiosRes
     return await api.put(`/bookings/${id}`, data);
 }
 
-export const deleteBookings = async (id: number): Promise<AxiosResponse<Booking[]>> => {
+export const deleteBooking = async (id: number): Promise<AxiosResponse<Booking[]>> => {
     return await api.delete(`/bookings/${id}`);;
 }
