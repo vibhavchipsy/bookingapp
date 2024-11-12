@@ -53,7 +53,7 @@ const BookingList: React.FC = () => {
             <h2>Bookings</h2>
             <ul>
                 {bookings.map((booking) => (
-                    <div key={booking.id} data-booking-id={booking.id}>
+                    <div key={booking.id} data-booking-id={booking.id} className='booking-item'>
                         {booking.name} - {booking.date}
                         <button onClick={() => booking.id && handleDelete(booking.id)}>Delete</button>
                         <button onClick={() => handleEdit(booking)}>Edit</button>
@@ -64,7 +64,7 @@ const BookingList: React.FC = () => {
             {loading && <p>Loading...</p>} {/* Show loading text */}
 
             {currentBooking &&
-                <form onSubmit={handleSubmitEdit}>
+                <form onSubmit={handleSubmitEdit} className='booking-form'>
                     <input
                         type='text'
                         value={currentBooking.name}
