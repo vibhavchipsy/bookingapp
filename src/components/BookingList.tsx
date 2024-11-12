@@ -8,7 +8,7 @@ const BookingList: React.FC = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        loadBookings(); ations in 
+        loadBookings();
     }, []);
 
     const loadBookings = async () => {
