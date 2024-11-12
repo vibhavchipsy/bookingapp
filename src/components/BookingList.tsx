@@ -17,8 +17,11 @@ const BookingList: React.FC = () => {
     };
 
     const handleDelete = async (id: number) => {
-        await deleteBooking(id);
-        loadBookings(); // Refresh the list after deletion
+        const confirmed = window.confirm("are you sure you want to delete this booking?");
+        if (confirmed) {
+            await deleteBooking(id);
+            loadBookings(); // Refresh the list after deletion
+        }
     };
 
     // Handle edit button click
