@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useBookings } from '../../hooks/useBookings';
 import BookingSearch from './BookingSearch';
+import BookingItem from './BookingItem';
 
 const BookingList: React.FC = () => {
 
@@ -21,16 +22,11 @@ const BookingList: React.FC = () => {
         <div>
             <h2>All Bookings</h2>
 
-            {/* search input for filtering */}
             <BookingSearch searchQuery={searchQuery} onSearchChange={handleSearchChange} />
 
             <ul>
                 {bookings.map((booking) => (
-                    <div key={booking.id} data-booking-id={booking.id} className='booking-item'>
-                        {booking.name} - {booking.date}
-                        <button onClick={() => booking.id && handleDelete(booking.id)}>Delete</button>
-                        <button onClick={() => handleEdit(booking)}>Edit</button>
-                    </div>
+                    <BookingItem key={booking.id} booking={booking} onDelete={handleDelete} onEdit={handleEdit} />
                 ))}
             </ul>
 
