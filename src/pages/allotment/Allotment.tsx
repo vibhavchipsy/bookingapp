@@ -1,6 +1,7 @@
 // BookingList.tsx
 import React, { useEffect, useState } from 'react';
 import { useBookings } from '../../hooks/useBookings';
+import BookingSearch from './BookingSearch';
 
 const BookingList: React.FC = () => {
 
@@ -19,13 +20,10 @@ const BookingList: React.FC = () => {
     return (
         <div>
             <h2>All Bookings</h2>
+
             {/* search input for filtering */}
-            <input
-                type='text'
-                placeholder='Search bookings...'
-                value={searchQuery}
-                onChange={handleSearchChange}
-            />
+            <BookingSearch searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+
             <ul>
                 {bookings.map((booking) => (
                     <div key={booking.id} data-booking-id={booking.id} className='booking-item'>
