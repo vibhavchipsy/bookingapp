@@ -1,6 +1,6 @@
 // BookingList.tsx
 import React, { useEffect, useState } from 'react';
-import { useBookings } from '../hooks/useBookings';
+import { useBookings } from '../../hooks/useBookings';
 
 const BookingList: React.FC = () => {
 
