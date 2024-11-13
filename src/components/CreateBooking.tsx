@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Booking, createBooking } from '../services/bookingService';
+import { createBooking } from '../services/bookingService';
 import { toast } from 'react-toastify';
+import { Booking } from '../models/bookingModel';
 
 interface CreateBookingProps {
     onBookingCreated: () => void;

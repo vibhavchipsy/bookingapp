@@ -1,7 +1,8 @@
 // BookingList.tsx
 import React, { useEffect, useState } from 'react';
-import { Booking, getBookings, deleteBooking, updateBooking } from '../services/bookingService';
+import { getBookings, deleteBooking, updateBooking } from '../services/bookingService';
 import { ToastContainer, toast } from 'react-toastify';
+import { Booking } from '../models/bookingModel';
 
 const BookingList: React.FC = () => {
     const [bookings, setBookings] = useState<Booking[]>([]);
