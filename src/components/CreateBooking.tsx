@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Booking, createBooking } from '../services/bookingService';
+import { toast } from 'react-toastify';
 
 interface CreateBookingProps {
     onBookingCreated: () => void;
@@ -16,6 +17,7 @@ const CreateBooking: React.FC<CreateBookingProps> = ({ onBookingCreated }) => {
         onBookingCreated();
         setName('');
         setDate('');
+        toast.success("Booking created successfully!");
     };
 
     return (
