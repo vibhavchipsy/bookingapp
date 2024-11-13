@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BookingList from './components/BookingList';
+import BookingList from './pages/allotment/Allotment';
 import CreateBooking from './components/CreateBooking';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
