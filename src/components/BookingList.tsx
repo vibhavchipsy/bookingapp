@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getBookings, deleteBooking, updateBooking } from '../services/bookingService';
 import { ToastContainer, toast } from 'react-toastify';
 import { Booking } from '../models/bookingModel';
+import { fetchAllBookings } from '../handlers/bookingHandler';
 
 const BookingList: React.FC = () => {
     const [bookings, setBookings] = useState<Booking[]>([]);
@@ -15,8 +16,12 @@ const BookingList: React.FC = () => {
     }, []);
 
     const loadBookings = async () => {
-        const response = await getBookings();
-        setBookings(response.data);
+        try {
+            const response = await fetchAllBookings();
+            setBookings(response);
+        } catch (error) {
+            console.error("Failed to load bookings", error);
+        }
     };
 
     const handleDelete = async (id: number) => {
