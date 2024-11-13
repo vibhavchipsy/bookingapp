@@ -1,6 +1,7 @@
 // BookingList.tsx
 import React, { useEffect, useState } from 'react';
 import { Booking, getBookings, deleteBooking, updateBooking } from '../services/bookingService';
+import { ToastContainer, toast } from 'react-toastify';
 
 const BookingList: React.FC = () => {
     const [bookings, setBookings] = useState<Booking[]>([]);
@@ -21,6 +22,7 @@ const BookingList: React.FC = () => {
         if (confirmed) {
             await deleteBooking(id);
             loadBookings(); // Refresh the list after deletion
+            toast.error("Booking deleted!");
         }
     };
 
