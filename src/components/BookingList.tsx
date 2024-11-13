@@ -43,6 +43,7 @@ const BookingList: React.FC = () => {
             await updateBooking(currentBooking.id, currentBooking);
             setBookings((prev) => prev.map((b) => (b.id === currentBooking.id ? currentBooking : b)));
             setCurrentBooking(null); // Reset the form
+            toast.info("Booking updated successfully!");
         } catch (error) {
             console.error("error updating booking: ", error);
         } finally {
