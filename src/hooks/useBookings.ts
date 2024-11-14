@@ -23,7 +23,7 @@ export const useBookings = () => {
         }
     };
 
-    const handleDelete = async (id: number) => {
+    const handleDelete = async (id: string) => {
         const confirmed = window.confirm("are you sure you want to delete this booking?");
         if (confirmed) {
             await deleteBooking(id);
@@ -46,8 +46,8 @@ export const useBookings = () => {
 
         // Update the booking in the backend and the UI
         try {
-            await updateBooking(currentBooking.id, currentBooking);
-            setBookings((prev) => prev.map((b) => (b.id === currentBooking.id ? currentBooking : b)));
+            await updateBooking(currentBooking._id as string, currentBooking);
+            setBookings((prev) => prev.map((b) => (b._id === currentBooking._id ? currentBooking : b)));
             setCurrentBooking(null); // Reset the form
             toast.info("Booking updated successfully!");
         } catch (error) {

@@ -12,13 +12,17 @@ export const getBookingsById = async (id: number): Promise<AxiosResponse<Booking
 }
 
 export const createBooking = async (bookingData: Booking): Promise<AxiosResponse<Booking>> => {
-    return await api.post(bookingEndpoints.CREATE_BOOKING, bookingData);
+    const response = await api.post(bookingEndpoints.CREATE_BOOKING, bookingData);
+    console.log(response);
+    console.log('Booking created with ID:', response.data._id);
+    return response;
 }
 
-export const updateBooking = async (id: number, data: Booking): Promise<AxiosResponse<Booking[]>> => {
-    return await api.put(`/bookings/${id}`, data);
+export const updateBooking = async (id: string, data: Booking): Promise<AxiosResponse<Booking>> => {
+    return await api.put(`${bookingEndpoints.UPDATE_BOOKING}/${id}`, data);
 }
 
-export const deleteBooking = async (id: number): Promise<AxiosResponse<Booking[]>> => {
-    return await api.delete(`/bookings/${id}`);;
+export const deleteBooking = async (id: string): Promise<AxiosResponse<Booking[]>> => {
+    // return await api.delete(`/bookings/${id}`);
+    return await api.delete(`${bookingEndpoints.DELETE_BOOKING}/${id}`);
 }

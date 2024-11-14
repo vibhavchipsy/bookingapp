@@ -27,7 +27,7 @@ const BookingList: React.FC = () => {
 
             <ul>
                 {bookings.map((booking) => (
-                    <BookingItem key={booking.id} booking={booking} onDelete={handleDelete} onEdit={handleEdit} />
+                    <BookingItem key={booking._id} booking={booking} onDelete={handleDelete} onEdit={handleEdit} />
                 ))}
             </ul>
 
