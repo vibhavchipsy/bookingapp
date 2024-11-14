@@ -11,8 +11,8 @@ export const getBookingsById = async (id: number): Promise<AxiosResponse<Booking
     return await api.get(`/bookings/${id}`);
 }
 
-export const createBooking = async (data: Booking): Promise<AxiosResponse<Booking[]>> => {
-    return await api.post('/bookings', data);
+export const createBooking = async (bookingData: Booking): Promise<AxiosResponse<Booking>> => {
+    return await api.post(bookingEndpoints.CREATE_BOOKING, bookingData);
 }
 
 export const updateBooking = async (id: number, data: Booking): Promise<AxiosResponse<Booking[]>> => {
